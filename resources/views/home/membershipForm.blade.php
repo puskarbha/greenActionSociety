@@ -12,53 +12,54 @@
 <body>
 @include('home.navbar')
 <section class="membershipForm">
-<div class="membership-form-container">
-    <form>
-        <div class="form-group">
-            <label for="name">Name*</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-        </div>
-        <div class="form-group">
-            <label for="country">Country*</label>
-            <input type="text" class="form-control" id="country" placeholder="Enter your country" required>
-        </div>
-        <div class="form-group">
-            <label for="district">District*</label>
-            <input type="text" class="form-control" id="district" placeholder="Enter your district" required>
-        </div>
-        <div class="form-group">
-            <label for="city">City*</label>
-            <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
-        </div>
-        <div class="form-group">
-            <label for="mobile">Mobile Number*</label>
-            <input type="tel" class="form-control" id="mobile" placeholder="Enter your mobile number" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Email*</label>
-            <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-        </div>
-        <div class="form-group">
-            <label for="school">School*</label>
-            <select class="form-control" id="school" required>
-                <option value="">Select an option</option>
-                <option value="school1">School 1</option>
-                <option value="school2">School 2</option>
-                <option value="school3">School 3</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="form-group" id="otherSchoolContainer" style="display: none;">
-            <label for="otherSchool">Other School</label>
-            <input type="text" class="form-control" id="otherSchool" placeholder="Enter other school name">
-        </div>
-        <div class="form-group">
-            <label for="workedOnOrg">Worked on any organization</label>
-            <input type="text" class="form-control" id="workedOnOrg" placeholder="Enter your previous organization">
-        </div>
-        <button type="submit" class="btn " style="background-color: rgba(0,0,255,0.56);margin: 5px; margin-left: 40%">Submit</button>
-    </form>
-</div>
+    <div class="membership-form-container">
+        <form method="post" action="{{route('be-a-member')}}">
+            @csrf
+            <div class="form-group">
+                <label for="name">Name*</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="country">Country*</label>
+                <input type="text" class="form-control" id="country" name="country" placeholder="Enter your country" required>
+            </div>
+            <div class="form-group">
+                <label for="district">District*</label>
+                <input type="text" class="form-control" id="district"  name="district" placeholder="Enter your district" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City*</label>
+                <input type="text" class="form-control" id="city" name="city" placeholder="Enter your city" required>
+            </div>
+            <div class="form-group">
+                <label for="mobile">Mobile Number*</label>
+                <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email*</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="school">School*</label>
+                <select class="form-control" id="school" name="school" required>
+                    <option value="">Select an option</option>
+                    <option value="school1">School 1</option>
+                    <option value="school2">School 2</option>
+                    <option value="school3">School 3</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group" id="otherSchoolContainer" style="display: none;">
+                <label for="otherSchool">Other School</label>
+                <input type="text" class="form-control" id="otherSchool" name="otherSchool" placeholder="Enter other school name">
+            </div>
+            <div class="form-group">
+                <label for="workedOnOrg">Worked on any organization</label>
+                <input type="text" class="form-control" id="workedOnOrg" name="workedOnOrg" placeholder="Enter your previous organization">
+            </div>
+            <button type="submit" class="btn" style="background-color: rgba(0,0,255,0.56);margin: 5px; margin-left: 40%">Submit</button>
+        </form>
+    </div>
 </section>
 
 <script>
@@ -66,6 +67,7 @@
         var otherSchoolContainer = document.getElementById('otherSchoolContainer');
         if (this.value === 'other') {
             otherSchoolContainer.style.display = 'block';
+            document.getElementById('school').value = document.getElementById('otherSchool').value;
         } else {
             otherSchoolContainer.style.display = 'none';
         }

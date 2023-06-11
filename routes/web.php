@@ -25,10 +25,10 @@ Route::middleware([
 ])->group(function () {
 
     Route::get('/membership-form', [HomeController::class,'membershipForm'])->name('membershipForm');
+    Route::post('/be-a-member',[HomeController::class,'be_a_member'])->name('be-a-member');
 });
 //admin Routes
 Route::group(['middleware' => 'admin'], function () {
-
     Route::get('/edit_posts', [AdminController::class, 'edit_posts'])->name('edit_posts');
 });
 

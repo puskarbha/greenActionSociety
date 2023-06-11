@@ -9,6 +9,7 @@
             </div>
             <div class="col-lg-12">
                 <div class="owl-carousel owl-theme">
+                    @foreach($reviews as $review)
                     {{-- first--}}
                     <div class="item">
                         <div class="testimonial-item">
@@ -17,24 +18,24 @@
                                 <i class="fa fa-quote-left"></i>
                             </div>
 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cumque dolore
-                                explicabo sunt? Ad aliquam cum doloribus
-                                explicabo nisi officia sapiente temporibus veniam voluptate voluptatibus. Assumenda
-                                nam nisi nulla tenetur.
-                            </p>
-                            <h4>Perosn's name</h4>
-                            <span class="position">Deginition Here</span>
-                            <ul class="stars">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                            </ul>
+                            <p>{{$review->review}}</p>
+                            <h4>{{$review->name}}</h4>
+                            <span class="position">{{$review->designation}}</span><br>
+                            <div>
+                                @for($i = 0; $i < $review->star; $i++)
+                                    <i class="fa fa-star"></i>
+                                @endfor
+                                @for($i = $review->star; $i < 5; $i++)
+                                    <i class="far fa-star"></i>
+                                @endfor
+                            </div>
+
+
+
                         </div>
                     </div>
 
-
+                    @endforeach
                 </div>
             </div>
         </div>
