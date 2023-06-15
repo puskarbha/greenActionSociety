@@ -28,7 +28,11 @@ class HomeController extends Controller
         $membership->otherSchool = $request->input('otherSchool');
         $membership->workedOnOrg = $request->input('workedOnOrg');
         $membership->save();
-        return redirect()->back()->with('success', 'Membership request submitted successfully.');
+        return redirect('/')->with('success', 'Membership request submitted successfully.');
     }
+public function projectDetails($id){
+        $project = Project::find($id);
+        return view('home.project',compact('project'));
+}
 
 }

@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
 Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+Route::get('projectDetails/{id}',[HomeController::class,'projectDetails'])->name('projectDetails');
 
 Route::middleware([
     'auth:sanctum',
@@ -32,6 +33,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/edit_posts', [AdminController::class, 'edit_posts'])->name('edit_posts');
 });
 
+
+Route::get('/adminPage', [AdminController::class, 'adminPage'])->name('adminPage');
+Route::get('/manageProject', [AdminController::class, 'manageProject'])->name('manageProject');
 
 
 

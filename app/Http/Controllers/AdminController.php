@@ -9,4 +9,12 @@ class AdminController extends Controller
     public function edit_posts(){
         return view('admin.edit_post');
     }
+
+
+    public function adminPage(){
+        return view('admin.adminPage');
+    }
+    public function manageProject(){
+        return view('admin.manageProject');
+    }
 }
