@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,6 +16,8 @@ class AdminController extends Controller
         return view('admin.adminPage');
     }
     public function manageProject(){
-        return view('admin.manageProject');
+
+        $projects = Project::orderBy('created_at', 'desc')->paginate(5);
+        return view('admin.manageProject', compact('projects'));
     }
 }
