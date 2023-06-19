@@ -13,7 +13,7 @@
                     {{-- first--}}
                     <div class="item">
                         <div class="testimonial-item">
-                            <img src="{{asset('home/images/image2.jpg')}}" alt="">
+                            <img src="/images/members/{{$review->image}}" alt="">
                             <div class="quote-icon">
                                 <i class="fa fa-quote-left"></i>
                             </div>

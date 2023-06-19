@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->string('designation');
             $table->string('review');
+            $table->string('image');
             $table->integer('star');
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */

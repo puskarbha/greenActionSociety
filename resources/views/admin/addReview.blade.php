@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +22,34 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.png')}}" />
+    <style>
 
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            color: black;
+        }
+        .image-preview {
+            max-width: 300px;
+            margin-left: 1rem;
+        }
+
+        .image-preview img {
+            display: none;
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
 <div class="container-scroller">
@@ -34,57 +62,37 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-
-                <div class="row ">
-                    <div class="col-12 grid-margin">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Our Projects</h4>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th> Project Title </th>
-                                            <th> Overview</th>
-                                            <th> Description </th>
-                                            <th> image </th>
-                                            <th> Author</th>
-                                            <th> Updated on </th>
-                                            <th> Project Status </th>
-                                            <th>Modify</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($projects as $project)
-                                        <tr >
-                                            <td style="white-space: pre-line;">{{$project->title}}</td>
-                                            <td style="white-space: pre-line;">{{$project->overView}}</td>
-                                            <td style="white-space: pre-line;">{{$project->description}}</td>
-                                            <td><img src="images/projects/{{$project->image}}" alt=""> </td>
-                                            <td>Author</td>
-                                            <td width="10px">{{$project->updated_at}} </td>
-
-                                            <td>
-                                                <div class="badge badge-outline-danger">closed</div>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                            </td>
-                                        </tr>
-
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                <div class="row">
+                    <form class="col-md-9" action="{{route('pushReview')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" required>
                         </div>
-                        <div  style="margin-top: 15px; display: flex; justify-content: center; align-items: center;">
-                          {{ $projects->links() }}
+
+                        <div class="form-group">
+                            <label for="designation">Designation</label>
+                            <input type="text" name="designation" maxlength="255" id="designation" required>
                         </div>
-                        <span style=" display: flex; justify-content: center; align-items: center;">
-                            Page {{ $projects->currentPage() }} of {{ $projects->lastPage() }}
-                        </span>
-                    </div>
+
+                        <div class="form-group">
+                            <label for="review">Review</label>
+                            <textarea name="review" id="review" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Image:</label>
+                            <input type="file" name="image" id="image" required>
+                        </div>
+                        <div class="image-preview" >
+                            <img id="image-preview" src="#" alt="Preview" />
+                        </div>
+                        <div class="form-group">
+                            <label for="star">Star</label>
+                            <input type="number" name="star" id="star" required max="5" min="1" step="1" placeholder="out of 5">
+                        </div>
+
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </form>
                 </div>
             </div>
             <!-- content-wrapper ends -->
@@ -119,6 +127,13 @@
 
 <!-- Custom js for this page -->
 <script src="{{asset('admin/assets/js/dashboard.js')}}"></script>
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        var preview = document.getElementById('image-preview');
+        preview.src = URL.createObjectURL(event.target.files[0]);
+        preview.style.display = 'block'; // Set display:block
+    });
+</script>
 <!-- End custom js for this page -->
 </body>
 </html>

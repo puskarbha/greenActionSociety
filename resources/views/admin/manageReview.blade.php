@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
+    <title>Client Review</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('admin/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('admin/assets/vendors/css/vendor.bundle.base.css')}}">
@@ -39,38 +39,39 @@
                     <div class="col-12 grid-margin">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Our Projects</h4>
+                                <h4 class="card-title">Client Reviews</h4>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th> Project Title </th>
-                                            <th> Overview</th>
-                                            <th> Description </th>
-                                            <th> image </th>
-                                            <th> Author</th>
-                                            <th> Updated on </th>
-                                            <th> Project Status </th>
+                                            <th> S.N </th>
+                                            <th> Name</th>
+                                            <th> Designation </th>
+                                            <th>Image</th>
+                                            <th> Review </th>
+                                            <th> Star</th>
+                                            <th> created on </th>
                                             <th>Modify</th>
+
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($projects as $project)
-                                        <tr >
-                                            <td style="white-space: pre-line;">{{$project->title}}</td>
-                                            <td style="white-space: pre-line;">{{$project->overView}}</td>
-                                            <td style="white-space: pre-line;">{{$project->description}}</td>
-                                            <td><img src="images/projects/{{$project->image}}" alt=""> </td>
-                                            <td>Author</td>
-                                            <td width="10px">{{$project->updated_at}} </td>
-
-                                            <td>
-                                                <div class="badge badge-outline-danger">closed</div>
-                                            </td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                            $SN=1;
+                                        ?>
+                                        @foreach($reviews as $review)
+                                            <tr >
+                                                <td style="white-space: pre-line;">{{$SN++}}</td>
+                                                <td style="white-space: pre-line;">{{$review->name}}</td>
+                                                <td style="white-space: pre-line;">{{$review->designation}}</td>
+                                                <td style="white-space: pre-line;width: 100px"><img src="images/members/{{$review->image}} " alt=""></td>
+                                                <td style="white-space: pre-line;">{{$review->review}} </td>
+                                                <td>{{$review->star}}</td>
+                                                <td>{{$review->created_at}} </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-primary">Edit</button>
+                                                </td>
+                                            </tr>
 
                                         @endforeach
                                         </tbody>
@@ -79,10 +80,10 @@
                             </div>
                         </div>
                         <div  style="margin-top: 15px; display: flex; justify-content: center; align-items: center;">
-                          {{ $projects->links() }}
+                            {{ $reviews->links() }}
                         </div>
                         <span style=" display: flex; justify-content: center; align-items: center;">
-                            Page {{ $projects->currentPage() }} of {{ $projects->lastPage() }}
+                            Page {{ $reviews->currentPage() }} of {{ $reviews->lastPage() }}
                         </span>
                     </div>
                 </div>

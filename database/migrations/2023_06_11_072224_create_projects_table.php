@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('overView');
-            $table->string('description');
+            $table->string('overView',255);
+            $table->text('description');
             $table->string('image');
+            $table->string('author');
+            $table->string('project_status');
+            $table->string('modified_by')->nullable();
             $table->timestamps();
         });
     }

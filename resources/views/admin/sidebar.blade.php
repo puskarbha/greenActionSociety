@@ -1,6 +1,6 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="index.html"><img  src="{{asset('home/logo.jpg')}}" alt="logo" /></a>
         <a class="sidebar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <ul class="nav">
@@ -8,11 +8,11 @@
             <div class="profile-desc">
                 <div class="profile-pic">
                     <div class="count-indicator">
-                        <img class="img-xs rounded-circle " src="assets/images/faces/face15.jpg" alt="">
+                        <img class="img-xs rounded-circle " src="/images/members/{{{Auth::user()->image}}}" alt="">
                         <span class="count bg-success"></span>
                     </div>
                     <div class="profile-name">
-                        <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+                        <h5 class="mb-0 font-weight-normal">{{{Auth::user()->name}}}</h5>
                         <span>Gold Member</span>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="preview-item-content">
-                            <p class="preview-subject ellipsis mb-1 text-small">To-do list</p>
+                            <p class="preview-subject ellipsis mb-1 text-small" >Logout</p>
                         </div>
                     </a>
                 </div>
@@ -65,27 +65,42 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
+            <a class="nav-link" data-toggle="collapse" href="#projects" aria-expanded="false" aria-controls="projects">
+        <span class="menu-icon">
+            <i class="mdi mdi-laptop"></i>
+        </span>
                 <span class="menu-title">Projects</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="projects">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{route('manageProject')}}">Our Projects</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="">Add Project</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('manageProject')}}">Our Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('addProject')}}">Add Project</a>
+                    </li>
                 </ul>
             </div>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-                <span class="menu-title">Form Elements</span>
+            <a class="nav-link" data-toggle="collapse" href="#reviews" aria-expanded="false" aria-controls="reviews">
+        <span class="menu-icon">
+            <i class="mdi mdi-playlist-play"></i>
+        </span>
+                <span class="menu-title">Reviews</span>
+                <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="reviews">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('manageReview')}}">All Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('addReview')}}">Add Review</a>
+                    </li>
+                </ul>
+            </div>
         </li>
         <li class="nav-item menu-items">
             <a class="nav-link" href="pages/tables/basic-table.html">
@@ -104,11 +119,11 @@
             </a>
         </li>
         <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="">
               <span class="menu-icon">
                 <i class="mdi mdi-contacts"></i>
               </span>
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">Members</span>
             </a>
         </li>
         <li class="nav-item menu-items">

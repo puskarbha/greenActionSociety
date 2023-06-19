@@ -24,13 +24,17 @@
 <section class="projectDetails">
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <img src="{{asset('home/images/image2.jpg')}}" alt="Project Image" class="img-fluid">
-
+            <div class="col-md-12">
+                <img src="/projects/{{$project->image}}" alt="Project Image" class="img-fluid" width="60%" >
+            <div class="col-md-9">
 
                 <h1><b>Title</b></h1><h2>{{ $project->title }}</h2>
                 <h1><b>Overview</b></h1><p>{{ $project->overView }}</p>
                 <h1><b>Description</b></h1><p>{{ $project->description }}</p>
+                <h5>Author:{{$project->author}}</h5>
+                <h5>    on:{{$project->created_at}}</h5>
+            </div>
+
             </div>
         </div>
     </div>

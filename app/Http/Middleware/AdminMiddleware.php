@@ -20,6 +20,6 @@ class AdminMiddleware
         }
 
         // Redirect to unauthorized page or return response
-        abort(403, 'Unauthorized');
+return redirect('/login');
     }
 }

@@ -31,11 +31,17 @@ Route::middleware([
 //admin Routes
 Route::group(['middleware' => 'admin'], function () {
     Route::get('/edit_posts', [AdminController::class, 'edit_posts'])->name('edit_posts');
+    Route::get('/adminPage', [AdminController::class, 'adminPage'])->name('adminPage');
+//    for Projects
+    Route::get('/manageProject', [AdminController::class, 'manageProject'])->name('manageProject');
+    Route::get('/addProject', [AdminController::class, 'addProject'])->name('addProject');
+    Route::post('/pushProject',[AdminController::class,'pushProject'])->name('pushProject');
+//    for Reviews
+    Route::get('/manageReview', [AdminController::class, 'manageReview'])->name('manageReview');
+    Route::get('/addReview', [AdminController::class, 'addReview'])->name('addReview');
+    Route::post('/pushReview',[AdminController::class,'pushReview'])->name('pushReview');
 });
 
-
-Route::get('/adminPage', [AdminController::class, 'adminPage'])->name('adminPage');
-Route::get('/manageProject', [AdminController::class, 'manageProject'])->name('manageProject');
 
 
 

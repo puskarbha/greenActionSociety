@@ -80,7 +80,7 @@
                 {{-- card-1 --}}
                 <div class="col-md-3">
                     <div class="card" style="margin: 10px;">
-                        <img src="{{asset('home/images/image2.jpg')}}" class="card-img-top" alt="...">
+                        <img src="images/projects/{{$project->image}}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><b>{{$project->title}}</b></h5>
                             <p class="card-text">{{$project->overView}}</p>
