@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Member;
+use App\Models\Team;
 use App\Models\User;
 use App\Models\Project;
 use App\Models\Review;
@@ -15,7 +17,8 @@ class AdminController extends Controller
 
 
     public function adminPage(){
-        return view('admin.adminPage');
+        $members=Member::all();
+        return view('admin.adminPage',compact('members'));
     }
     public function manageProject(){
 
@@ -61,5 +64,15 @@ class AdminController extends Controller
         $review->image=$imageName;
         $review->save();
         return redirect('/adminPage')->with('message','');
+    }
+//for Members
+    public function pendingMember(){
+            $members=Member::all();
+            return view('admin.pendingMember',compact('members'));
+    }
+    public function ourTeam()
+    {
+        $T_members = Team::all();
+        return view('admin.ourteam',compact('T_members'));
     }
 }

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,34 +21,6 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.png')}}" />
-    <style>
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.5rem;
-            color: black;
-        }
-        .image-preview {
-            max-width: 300px;
-            margin-left: 1rem;
-        }
-
-        .image-preview img {
-            display: none;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
 <div class="container-scroller">
@@ -62,38 +33,65 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="row">
-                    <form class="col-md-9" action="{{route('pushReview')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" required>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="designation">Designation</label>
-                            <input type="text" name="designation" maxlength="255" id="designation" required>
-                        </div>
+                <div class="row ">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Member request</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th> Name </th>
+                                            <th> Country </th>
+                                            <th> District </th>
+                                            <th> City</th>
+                                            <th> Mobile </th>
+                                            <th> Email </th>
+                                            <th> School </th>
+                                            <th>Previous Organization</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($members as $member)
+                                            <tr>
+                                                <td>{{$member->name}}</td>
+                                                <td> {{$member->country}}</td>
+                                                <td>{{$member->district}}</td>
+                                                <td> {{$member->city}}</td>
+                                                <td> {{$member->mobile}}</td>
+                                                <td> {{$member->email}}</td>
+                                                <td>{{$member->school}}</td>
+                                                <td>{{$member->workedOnOrg}}</td>
+                                                <td>
+                                                        <?php
+                                                    if(($member->status)=='approved')
+                                                    {
+                                                        ?>
+                                                    <button class="badge badge-outline-success">Approved</button>
+                                                        <?php
+                                                    }
+                                                    else{
+                                                        ?>
+                                                    <button class="badge badge-outline-primary">Pending</button>
+                                                        <?php
+                                                    }
+                                                        ?>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-                        <div class="form-group">
-                            <label for="review">Review</label>
-                            <textarea name="review" id="review" maxlength="255" required></textarea>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="image">Image:</label>
-                            <input type="file" name="image" id="image" required>
-                        </div>
-                        <div class="image-preview" >
-                            <img id="image-preview" src="#" alt="Preview" />
-                        </div>
-                        <div class="form-group">
-                            <label for="star">Star</label>
-                            <input type="number" name="star" id="star" required max="5" min="1" step="1" placeholder="out of 5">
-                        </div>
-
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </form>
+                    </div>
                 </div>
+
+
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
@@ -127,13 +125,6 @@
 
 <!-- Custom js for this page -->
 <script src="{{asset('admin/assets/js/dashboard.js')}}"></script>
-<script>
-    document.getElementById('image').addEventListener('change', function(event) {
-        var preview = document.getElementById('image-preview');
-        preview.src = URL.createObjectURL(event.target.files[0]);
-        preview.style.display = 'block'; // Set display:block
-    });
-</script>
 <!-- End custom js for this page -->
 </body>
 </html>

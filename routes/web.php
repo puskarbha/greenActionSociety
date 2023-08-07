@@ -30,8 +30,8 @@ Route::middleware([
 });
 //admin Routes
 Route::group(['middleware' => 'admin'], function () {
-    Route::get('/edit_posts', [AdminController::class, 'edit_posts'])->name('edit_posts');
     Route::get('/adminPage', [AdminController::class, 'adminPage'])->name('adminPage');
+    Route::get('/edit_posts', [AdminController::class, 'edit_posts'])->name('edit_posts');
 //    for Projects
     Route::get('/manageProject', [AdminController::class, 'manageProject'])->name('manageProject');
     Route::get('/addProject', [AdminController::class, 'addProject'])->name('addProject');
@@ -40,6 +40,9 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('/manageReview', [AdminController::class, 'manageReview'])->name('manageReview');
     Route::get('/addReview', [AdminController::class, 'addReview'])->name('addReview');
     Route::post('/pushReview',[AdminController::class,'pushReview'])->name('pushReview');
+//    for members
+    Route::get('/pendingMember',[AdminController::class,'pendingMember'])->name('pendingMember');
+    Route::get('/ourTeam',[AdminController::class,'ourTeam'])->name('ourTeam');
 });
 
 

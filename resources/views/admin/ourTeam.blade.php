@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,34 +21,6 @@
     <link rel="stylesheet" href="{{asset('admin/assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('admin/assets/images/favicon.png')}}" />
-    <style>
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.5rem;
-            color: black;
-        }
-        .image-preview {
-            max-width: 300px;
-            margin-left: 1rem;
-        }
-
-        .image-preview img {
-            display: none;
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
 </head>
 <body>
 <div class="container-scroller">
@@ -62,38 +33,53 @@
         <!-- partial -->
         <div class="main-panel">
             <div class="content-wrapper">
-                <div class="row">
-                    <form class="col-md-9" action="{{route('pushReview')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" required>
-                        </div>
 
-                        <div class="form-group">
-                            <label for="designation">Designation</label>
-                            <input type="text" name="designation" maxlength="255" id="designation" required>
-                        </div>
+                <div class="row ">
+                    <div class="col-12 grid-margin">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Our team</h4>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
 
-                        <div class="form-group">
-                            <label for="review">Review</label>
-                            <textarea name="review" id="review" maxlength="255" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Image:</label>
-                            <input type="file" name="image" id="image" required>
-                        </div>
-                        <div class="image-preview" >
-                            <img id="image-preview" src="#" alt="Preview" />
-                        </div>
-                        <div class="form-group">
-                            <label for="star">Star</label>
-                            <input type="number" name="star" id="star" required max="5" min="1" step="1" placeholder="out of 5">
-                        </div>
+                                        <tr>
+                                            <th>S.N</th>
+                                            <th> Name </th>
+                                            <th> Country </th>
+                                            <th> District </th>
+                                            <th> City</th>
+                                            <th> Mobile </th>
+                                            <th> Email </th>
+                                            <th> School </th>
+                                            <th>Position</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php $sn=1; ?>
+                                        @foreach($T_members as $T_member)
+                                            <tr>
+                                                <td>{{$sn++}}</td>
+                                                <td>{{$T_member->name}}</td>
+                                                <td> {{$T_member->country}}</td>
+                                                <td>{{$T_member->district}}</td>
+                                                <td> {{$T_member->city}}</td>
+                                                <td> {{$T_member->mobile}}</td>
+                                                <td> {{$T_member->email}}</td>
+                                                <td>{{$T_member->school}}</td>
+                                                <td>{{$T_member->position}}</td>
+                                            </tr>
+                                        @endforeach
 
-                        <input class="btn btn-primary" type="submit" value="Submit">
-                    </form>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:partials/_footer.html -->
@@ -127,13 +113,6 @@
 
 <!-- Custom js for this page -->
 <script src="{{asset('admin/assets/js/dashboard.js')}}"></script>
-<script>
-    document.getElementById('image').addEventListener('change', function(event) {
-        var preview = document.getElementById('image-preview');
-        preview.src = URL.createObjectURL(event.target.files[0]);
-        preview.style.display = 'block'; // Set display:block
-    });
-</script>
 <!-- End custom js for this page -->
 </body>
 </html>

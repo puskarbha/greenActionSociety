@@ -24,7 +24,6 @@
 
 <script>
     function redirectToRoute() {
-        // Replace 'route_name' with the actual name of the Laravel route you want to navigate to
         window.location.href = '{{ route("membershipForm") }}';
     }
 </script>

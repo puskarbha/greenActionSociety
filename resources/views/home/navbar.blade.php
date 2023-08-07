@@ -2,9 +2,8 @@
     <nav class="navbar navbar-expand-lg bg-dark"  >
     <div class="container-fluid" style="background-color: white;color: white">
         <a class="navbar-brand" href="#">
-            <img src="{{asset('home/logo.jpg')}}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-            <span class="d-inline-block align-text-top">GREEN action</span>
-            <span class="d-inline-block align-text-bottom" style="font-size: small;">society</span>
+            <img src="{{asset('images/logo.jpg')}}" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            <span class="d-inline-block align-text-top">GREEN action Society</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -35,13 +34,13 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link ">Documents</a>
                 </li>
             </ul>
         </div>
