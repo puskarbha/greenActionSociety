@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse order-lg-2" id="navbarNav">
-            <div class="navbar-nav ms-auto">
+            <div class="navbar-nav ms-auto visible--item">
                 @if(Route::has('login'))
                     @auth()
                         @csrf
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="collapse navbar-collapse order-lg-1" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav visible--item">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
