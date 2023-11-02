@@ -72,7 +72,7 @@
                 <span class="menu-title">Projects</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="projects">
+            <div class="my--collapse" id="projects">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('manageProject')}}">Our Projects</a>
@@ -91,7 +91,7 @@
                 <span class="menu-title">Reviews</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="reviews">
+            <div class="my--collapse" id="reviews">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('manageReview')}}">All Reviews</a>
@@ -110,10 +110,10 @@
                 <span class="menu-title">Members</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="members">
+            <div class="my--collapse" id="members">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('ourTeam')}}">Our Team</a>
+                        <a class="nav-link" href="#">Our Team</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('pendingMember')}}">Membership Request</a>

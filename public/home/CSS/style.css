@@ -1,6 +1,12 @@
+/* for project section */
+.project--image{
+    height: 250px;
+}
+
 /*For review*/
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+
 
 .testimonial{
     background:#E5E5E5;
@@ -428,6 +434,7 @@
 
 /*membershipForm*/
 .membershipForm{
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -435,6 +442,9 @@
     background-color: moccasin;
 }
 .membership-form-container {
+    margin: 0px;
+    display: flex;
+    justify-content: center;
     width: 400px;
     padding: 20px;
     background-color: #ffffff;

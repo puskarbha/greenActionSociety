@@ -14,7 +14,7 @@
           integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="{{asset('home/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('home/CSS/style.css')}}">
 
 </head>
 <body>
@@ -80,10 +80,12 @@
                 {{-- card-1 --}}
                 <div class="col-md-3">
                     <div class="card" style="margin: 10px;">
-                        <img src="images/projects/{{$project->image}}" class="card-img-top" alt="...">
+                        <img src="images/projects/{{$project->image}}" class="card-img-top project--image" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><b>{{$project->title}}</b></h5>
-                            <p class="card-text">{{$project->overView}}</p>
+                            <p class="card-text project-card-overview">
+                            {{ strlen($project->overView) > 100 ? substr($project->overView, 0, 100) . '...' : $project->overView }}
+                            </p>
                             <a href="{{url('projectDetails',$project->id)}}" class="btn btn-primary">Read More</a>
                         </div>
                     </div>

@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="/projects/{{$project->image}}" alt="Project Image" class="img-fluid" width="60%" >
+                <img src="/projects/{{$project->image}}" alt="Project Image" class="img-fluid " >
             <div class="col-md-9">
 
                 <h1><b>Title</b></h1><h2>{{ $project->title }}</h2>
